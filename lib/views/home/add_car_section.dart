@@ -1,5 +1,7 @@
+import 'package:fire_cars/views/home/show_car_dialog.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 
 
@@ -59,7 +61,9 @@ class AddCarSection extends StatelessWidget {
                         color: Theme.of(context).primaryColor.withOpacity(0.5)
                       ),
                       child: IconButton(
-                        onPressed: () {}, 
+                        onPressed: () {
+                          showCarDialog(context, user!);
+                        }, 
                         icon: Icon(Icons.add)
                       ),
                     )
@@ -71,5 +75,8 @@ class AddCarSection extends StatelessWidget {
         ]
       )
     );
+  }
+  void showCarDialog(BuildContext context, User user) {
+    CarDialog(user: user).showCarDialog(context, ImageSource.gallery);
   }
 }
